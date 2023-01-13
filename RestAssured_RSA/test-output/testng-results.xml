@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-01-11T14:57:12 IST" name="Default suite" finished-at="2023-01-11T14:57:21 IST" duration-ms="9816">
+    <groups>
+    </groups>
+    <test started-at="2023-01-11T14:57:12 IST" name="Default test" finished-at="2023-01-11T14:57:21 IST" duration-ms="9816">
+      <class name="jira.Jira_03_AddAttachment_GetIssue_EndtoEnd">
+        <test-method is-config="true" signature="LoginToJira()[pri:0, instance:jira.Jira_03_AddAttachment_GetIssue_EndtoEnd@6fd83fc1]" started-at="2023-01-11T14:57:12 IST" name="LoginToJira" finished-at="2023-01-11T14:57:16 IST" duration-ms="4200" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoginToJira -->
+        <test-method signature="createIssue()[pri:0, instance:jira.Jira_03_AddAttachment_GetIssue_EndtoEnd@6fd83fc1]" started-at="2023-01-11T14:57:16 IST" name="createIssue" finished-at="2023-01-11T14:57:17 IST" duration-ms="1547" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createIssue -->
+        <test-method signature="AddComment()[pri:0, instance:jira.Jira_03_AddAttachment_GetIssue_EndtoEnd@6fd83fc1]" started-at="2023-01-11T14:57:18 IST" name="AddComment" finished-at="2023-01-11T14:57:18 IST" depends-on-methods="jira.Jira_03_AddAttachment_GetIssue_EndtoEnd.createIssue" duration-ms="292" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AddComment -->
+        <test-method signature="addAttachment()[pri:0, instance:jira.Jira_03_AddAttachment_GetIssue_EndtoEnd@6fd83fc1]" started-at="2023-01-11T14:57:18 IST" name="addAttachment" finished-at="2023-01-11T14:57:21 IST" depends-on-methods="jira.Jira_03_AddAttachment_GetIssue_EndtoEnd.createIssue" duration-ms="3349" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addAttachment -->
+        <test-method signature="UpdateComment()[pri:0, instance:jira.Jira_03_AddAttachment_GetIssue_EndtoEnd@6fd83fc1]" started-at="2023-01-11T14:57:21 IST" name="UpdateComment" finished-at="2023-01-11T14:57:21 IST" depends-on-methods="jira.Jira_03_AddAttachment_GetIssue_EndtoEnd.AddComment" duration-ms="289" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- UpdateComment -->
+      </class> <!-- jira.Jira_03_AddAttachment_GetIssue_EndtoEnd -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

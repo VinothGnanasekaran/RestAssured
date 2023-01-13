@@ -1,0 +1,16 @@
+{
+  "location": {
+    "lat": -34.383494,
+    "lng": 38.427362
+  },
+  "accuracy": 50,
+  "name": "Love house",
+  "phone_number": "(+91) 983 893 3937",
+  "address": "2/44, 3rd sidco Main Road , chen 118",
+  "types": [
+    "shoe park",
+    "shop"
+  ],
+  "website": "http://google.com",
+  "language": "French-IN"
+}
