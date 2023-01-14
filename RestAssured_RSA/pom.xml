@@ -43,6 +43,8 @@
     <scope>test</scope>
 </dependency>
 
+<!-- The below are dependencies requied for implemenation of the POJO Classes in RESTASSURED-->
+
 <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 <dependency>
     <groupId>com.google.code.gson</groupId>
