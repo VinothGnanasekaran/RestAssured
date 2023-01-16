@@ -22,16 +22,17 @@ public class RSA_PlaceValidations extends Utils {
 	Response response;
 	TestDataPayload testdata = new TestDataPayload();
 	
-	@Given("User to add all Request Builder Spec for the AddPlace request")
-	public void user_to_add_all_request_builder_spec_for_the_add_place_request() throws IOException {
+	
+	 @Given("User to add all Request Builder Spec for the AddPlace request with {string} {string} {string}")
+	public void user_to_add_all_request_builder_spec_for_the_add_place_request_with(String name, String language, String address) throws IOException {
 					
 		System.out.println("Request Spec is Build is invoked in SD class");
-		request = given().log().all().spec(requestSpec()).body(testdata.addPlace_Payload()); //Here instead of 'Spec(reqSB)' passed, due to inheritance(Utils), we access its method directly without obj
+		request = given().log().all().spec(requestSpec()).body(testdata.addPlace_Payload(name, language, address)); //Here instead of 'Spec(reqSB)' passed, due to inheritance(Utils), we access its method directly without obj
 		System.out.println("Request is Sent");
 	}
 
-	@When("User calls for {string} Api call")
-	public void user_calls_for_api_call(String string) {
+	@When("User calls for {string} Api call with {string} method")
+	public void user_calls_for_api_call_with_method(String Api, String method) {
 	
 		post = request.when().post("maps/api/place/add/json");
 	}

@@ -17,7 +17,7 @@ import io.restassured.specification.ResponseSpecification;
 
 public class Utils {
 
-	RequestSpecification reqSB;
+	private static RequestSpecification reqSB;
 	ResponseSpecification respSB;
 	private PrintStream logFile;
 
@@ -30,6 +30,7 @@ public class Utils {
 	
 	public RequestSpecification requestSpec() throws IOException {
 		//Build Request Spec
+		if (reqSB == null) {
 		logFile = new PrintStream(new FileOutputStream("LogFileReport.txt")); //FileOutputSteam - creates new file and writes during output, stores to printsteam (logFile)
 		reqSB = new RequestSpecBuilder()
 										.setBaseUri(getGlobalValues("baseUrl"))
@@ -40,6 +41,9 @@ public class Utils {
 										.build();
 		System.out.println("Request Spec is Build in Utils");
 		return reqSB;
+		}
+		else 
+			return reqSB;
 
 	}
 
