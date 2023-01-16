@@ -3,6 +3,9 @@ package stepDefinitions;
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -20,7 +23,7 @@ public class RSA_PlaceValidations extends Utils {
 	TestDataPayload testdata = new TestDataPayload();
 	
 	@Given("User to add all Request Builder Spec for the AddPlace request")
-	public void user_to_add_all_request_builder_spec_for_the_add_place_request() {
+	public void user_to_add_all_request_builder_spec_for_the_add_place_request() throws IOException {
 					
 		System.out.println("Request Spec is Build is invoked in SD class");
 		request = given().log().all().spec(requestSpec()).body(testdata.addPlace_Payload()); //Here instead of 'Spec(reqSB)' passed, due to inheritance(Utils), we access its method directly without obj
