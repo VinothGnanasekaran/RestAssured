@@ -21,12 +21,19 @@ Feature: This Feature is to create the Place Validations of RSA in framework dev
  
   Scenario Outline: Scenario for the AddPlace API
     Given User to add all Request Builder Spec for the AddPlace request with "<name>" "<language>" "<address>"
-      When User calls for "updatePlace" Api call with "Put" method
+      When User calls for "addPlace" Api call with "Post" method
         Then User should be successful with request status code 200
-    And User can validate the "status" in the response body is  "OK"
-  
-    Examples:
+    	And User validates the "status" in the response body is  "OK"
+    And User to validate the "<name>" in the response body when "getPlace" api is called
+    
+    
+     Examples:
   |	name 	| language 		| address 				|
  # |Test1		|	English-IN	|	World Center|
-  |Test2		|	French-IN		|	Europe Center|
- # |Test3		| Tamil-IN			|	Indian-South|
+ # |Test2		|	French-IN		|	Europe Center|
+  |Test3		| Tamil-IN			|	Indian-South|
+
+
+    		  
+  
+  

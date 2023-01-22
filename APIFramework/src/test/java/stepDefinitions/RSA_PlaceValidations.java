@@ -20,14 +20,14 @@ public class RSA_PlaceValidations extends Utils {
 
 	RequestSpecification request;
 	Response reqMethod;
-	Response response;
+	static Response response;
 	TestDataPayload testdata = new TestDataPayload();
 
 
 	@Given("User to add all Request Builder Spec for the AddPlace request with {string} {string} {string}")
 	public void user_to_add_all_request_builder_spec_for_the_add_place_request_with(String name, String language, String address) throws IOException {
 
-		System.out.println("Request Spec is Build is invoked in SD class");
+		System.out.println("Request Spec is Build for AddPlace is invoked in SD class");
 		request = given().log().all().spec(requestSpec()).body(testdata.addPlace_Payload(name, language, address)); //Here instead of 'Spec(reqSB)' passed, due to inheritance(Utils), we access its method directly without obj
 		System.out.println("Request is Sent");
 	}
@@ -39,7 +39,7 @@ public class RSA_PlaceValidations extends Utils {
 		//Command to fetch the API Resource
 		APIresources callApi = APIresources.valueOf(apiResource); 
 		System.out.println("The API resource called for place validation is : " +callApi.getResource());
-	
+
 		//Logic to find the method from CRUD actions
 		if(method.equalsIgnoreCase("POST")){
 			reqMethod = request.when().post(callApi.getResource());
@@ -58,17 +58,36 @@ public class RSA_PlaceValidations extends Utils {
 		System.out.println("Response Spec is Build is invoked in SD class");
 		response = reqMethod.then().spec(responseSpec()).extract().response(); //Here instead of 'Spec(respSB)' passed earlier, due to inheritance(Utils), we access its method directly without obj
 
-		assertEquals(response.getStatusCode(), 200);
+		assertEquals(response.getStatusCode(), int1);
 		System.out.println("Response is extracted");
 	}
 
-	@Then("User can validate the {string} in the response body is  {string}")
-	public void user_can_validate_the_in_the_response_body_is(String key, String value) {
+	@Then("User validates the {string} in the response body is  {string}")
+	public void user_can_validates_the_in_the_response_body_is(String key1, String value) {
 
-		String responseString = response.asString();
-		JsonPath js = new JsonPath(responseString);
-		assertEquals(js.get(key).toString(), value);
-		System.out.println("Response converted to String : "+responseString);
+		assertEquals(getJsonPath(response, key1), value);
+		System.out.println("Condition Matched: " +key1+ " to : " +value );
+		}
+
+	@Then("User to validate the {string} in the response body when {string} api is called")
+	public void user_to_validate_the_in_the_response_body_when_api_is_called(String expectedName, String getResource) throws IOException {
+			System.out.println("The Json path is called for extracting the PlaceID from prev response");
+		String placeId=getJsonPath(response, "place_id");
+			System.out.println("Request Spec for GetPlace is invoked in SD class");
+			
+		request = given().log().all().spec(requestSpec()).queryParam("place_id", placeId);
+			System.out.println("GetPlace Request is parsed without resource");
+			
+		user_calls_for_api_call_with_method(getResource, "get");
+			System.out.println("GetPlace Request is Sent completely");
+		response = reqMethod.then().spec(responseSpec()).extract().response();
+		String actualName = getJsonPath(response, "name");
+			System.out.println(actualName);
+		assertEquals( actualName, expectedName);
+			System.out.println("The Name of the get place matched");
+				
 	}
 
-}
+		
+			
+	}

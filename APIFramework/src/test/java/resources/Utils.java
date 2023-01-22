@@ -12,6 +12,8 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
@@ -56,4 +58,13 @@ public class Utils {
 		System.out.println("Response Spec is Build in Utils");
 		return respSB;
 	}
+	
+	public String getJsonPath(Response response, String key) {
+		String responseString = response.asString();
+		System.out.println("Validate the passing response: "+responseString);
+		JsonPath js = new JsonPath(responseString);
+		//System.out.println("ExtractedValue : " +js.get(key));
+		return js.getString(key);
+	}
+
 }
